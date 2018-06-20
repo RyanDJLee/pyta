@@ -28,6 +28,10 @@ class TypeInferenceChecker(BaseChecker):
             if isinstance(x.type, TypeErrorInfo):
                 self.add_message('type-error', args=x.type.msg, node=x.type.node)
 
+    @check_messages('type-error')
+    def visit_binop(self, node):
+        node
+
 
 def register(linter):
     linter.register_checker(TypeInferenceChecker(linter))
